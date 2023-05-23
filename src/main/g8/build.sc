@@ -30,13 +30,18 @@ object $name;format="camel"$ extends ScalaModule {
 
   override def ivyDeps = Agg(
     ivy"\${chiselOrg}::chisel3:\${chiselVersion}",
+    // some other useful libs
+    ivy"com.lihaoyi::mainargs:0.5.0",
+    ivy"com.lihaoyi::pprint:0.8.1",
+    ivy"com.lihaoyi::upickle:3.1.0",
+    ivy"com.outr::scribe:3.11.1",
   )
 
   override def scalacPluginIvyDeps = Agg(
     ivy"\${chiselOrg}:::chisel3-plugin:\${chiselVersion}"
   )
 
-  object test extends ScalaTests with TestModule.ScalaTest {
+  object test extends ScalaTests with TestModule.ScalaTest with TestModule.Munit {
     override def ivyDeps = super.ivyDeps() ++ Agg(
       ivy"org.scalatest::scalatest:3.2.15",
       ivy"org.scalacheck::scalacheck:1.17.0",
@@ -44,14 +49,7 @@ object $name;format="camel"$ extends ScalaModule {
         .excludeName("scalatest")
         .excludeName("chisel3")
         .excludeName("chisel3-plugin"),
+      ivy"org.scalameta::munit::1.0.1",
     )
-
-    object munit extends Tests with TestModule.Munit {
-      ivy"org.scalameta::munit::1.0.1"
-      def ivyDeps = Agg(
-      )
-    }
   }
-
 }
-
