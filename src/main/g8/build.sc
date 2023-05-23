@@ -41,7 +41,7 @@ object $name;format="camel"$ extends ScalaModule {
     ivy"\${chiselOrg}:::chisel3-plugin:\${chiselVersion}"
   )
 
-  object test extends ScalaTests with TestModule.ScalaTest with TestModule.Munit {
+  object test extends ScalaTests with TestModule.ScalaTest {
     override def ivyDeps = super.ivyDeps() ++ Agg(
       ivy"org.scalatest::scalatest:3.2.15",
       ivy"org.scalacheck::scalacheck:1.17.0",
