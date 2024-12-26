@@ -1,0 +1,19 @@
+out/
+.bloop/
+.bsp/
+.metals/
+
+# IDE files
+.idea/
+.vscode/
+
+*.class
+*.log
+
+# chiseltest
+test_run_dir/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+xeda_run/
