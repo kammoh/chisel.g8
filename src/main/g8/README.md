@@ -1,6 +1,6 @@
 # Chisel Template
 
-A minimal [Chisel](https://www.chisel-lang.org/) using [Mill](https://mill-build.org/mill/index.html) build tool.
+A template [Chisel](https://www.chisel-lang.org/) design projects using [Mill](https://mill-build.org/mill/index.html) build tool.
 
 To use [bloop](https://scalacenter.github.io/bloop/):
 
