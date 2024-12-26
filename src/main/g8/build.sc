@@ -10,12 +10,14 @@ object $name;format="camel"$ extends ScalaModule {
   val chiselTestVersion   = "6.0.0"
 
   override def scalacOptions = Seq(
-    // checks
-    "-language:reflectiveCalls",
-    "-deprecation",
+    // checks:
     "-feature",
+    "-deprecation",
     "-Xcheckinit",
-    // warnings
+    // chisel:
+    "-language:reflectiveCalls",
+    "-Ymacro-annotations",
+    // warnings:
     "-Wunused",
     "-Xlint:adapted-args",
     "-Wconf:cat=unused&msg=parameter .* in .* never used:silent"
