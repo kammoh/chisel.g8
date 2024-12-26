@@ -1,21 +1,24 @@
 import mill._
 import mill.scalalib._
 import scalafmt._
-import \$ivy.`io.crashbox::mill-jnilib:0.3.0`
-import \$ivy.`com.lihaoyi::mill-contrib-bloop:\$MILL_VERSION`
 
 object $name;format="camel"$ extends ScalaModule {
 
   def scalaVersion = "2.13.15"
 
-  val chiselOrg           = "org.chipsalliance"
-  val chiselVersion       = sys.env.getOrElse("CHISEL_VERSION", "7.0.0-M2+")
-  val chiselTestVersion   = "0"
+  val chiselVersion       = sys.env.getOrElse("CHISEL_VERSION", "7.0.0-M2+241-2d9c7195-SNAPSHOT")
+  val chiselTestVersion   = "6.0.0"
 
   override def scalacOptions = Seq(
-    "-language:reflectiveCalls", "-deprecation", "-feature", "-Xcheckinit",
-    "-Wconf:cat=deprecation&msg=Importing from firrtl is deprecated:s",
-    "-Wconf:cat=deprecation&msg=will not be supported as part of the migration to the MLIR-based FIRRTL Compiler:s",
+    // checks
+    "-language:reflectiveCalls",
+    "-deprecation",
+    "-feature",
+    "-Xcheckinit",
+    // warnings
+    "-Wunused",
+    "-Xlint:adapted-args",
+    "-Wconf:cat=unused&msg=parameter .* in .* never used:silent"
   )
 
   override def repositoriesTask = T.task {
@@ -23,27 +26,27 @@ object $name;format="camel"$ extends ScalaModule {
 
     super.repositoriesTask() ++ Seq( //
       MavenRepository("https://oss.sonatype.org/content/repositories/releases"),
-      MavenRepository("https://oss.sonatype.org/content/repositories/snapshots")
+      MavenRepository("https://oss.sonatype.org/content/repositories/snapshots"),
+      MavenRepository("https://s01.oss.sonatype.org/content/repositories/releases"),
+      MavenRepository("https://s01.oss.sonatype.org/content/repositories/snapshots"),
+      MavenRepository(s"file://\${os.home}/.m2/repository"),
+      // MavenRepository("https://jitpack.io"),
     )
   }
 
   override def ivyDeps = Agg(
-    ivy"\${chiselOrg}::chisel3:\${chiselVersion}",
-    // some other useful libs
-    ivy"com.lihaoyi::mainargs:0.7.0+",
-    // ivy"com.lihaoyi::pprint:0.8.1",
-    // ivy"com.lihaoyi::upickle:3.1.0",
-    // ivy"com.outr::scribe:3.11.1",
+    ivy"org.chipsalliance::chisel:\${chiselVersion}",
+    ivy"com.lihaoyi::mainargs:0.7.6",
   )
 
   override def scalacPluginIvyDeps = Agg(
-    ivy"\${chiselOrg}:::chisel3-plugin:\${chiselVersion}"
+    ivy"org.chipsalliance:::chisel-plugin:\${chiselVersion}"
   )
 
   object test extends ScalaTests with TestModule.ScalaTest {
     override def ivyDeps = super.ivyDeps() ++ Agg(
-      ivy"org.scalatest::scalatest:3.2.15",
-      ivy"org.scalacheck::scalacheck:1.17.0",
+      ivy"org.scalatest::scalatest:3.2.19",
+      ivy"org.scalacheck::scalacheck:1.18.1",
       ivy"edu.berkeley.cs::chiseltest:\${chiselTestVersion}"
         .excludeName("scalatest")
         .excludeName("chisel3")
