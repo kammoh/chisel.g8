@@ -10,8 +10,7 @@ object $name;format="camel"$ extends ScalaModule {
 
   val chiselOrg           = "org.chipsalliance"
   val chiselVersion       = sys.env.getOrElse("CHISEL_VERSION", "7.0.0-M2+")
-  val chiselTestVersion   = "0" + chiselVersion.tail
-  val chiselVerifyVersion = "0.3.0"
+  val chiselTestVersion   = "0"
 
   override def scalacOptions = Seq(
     "-language:reflectiveCalls", "-deprecation", "-feature", "-Xcheckinit",
@@ -49,7 +48,7 @@ object $name;format="camel"$ extends ScalaModule {
         .excludeName("scalatest")
         .excludeName("chisel3")
         .excludeName("chisel3-plugin"),
-      ivy"org.scalameta::munit::1.0.1",
+      ivy"org.scalameta::munit::1.0.3",
     )
   }
 }
