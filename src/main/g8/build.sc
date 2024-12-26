@@ -51,8 +51,8 @@ object $name;format="camel"$ extends ScalaModule {
       ivy"org.scalacheck::scalacheck:1.18.1",
       ivy"edu.berkeley.cs::chiseltest:\${chiselTestVersion}"
         .excludeName("scalatest")
-        .excludeName("chisel3")
-        .excludeName("chisel3-plugin"),
+        .excludeName("chisel")
+        .excludeName("chisel-plugin"),
       ivy"org.scalameta::munit::1.0.3",
     )
   }
