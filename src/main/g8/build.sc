@@ -6,10 +6,10 @@ import \$ivy.`com.lihaoyi::mill-contrib-bloop:\$MILL_VERSION`
 
 object $name;format="camel"$ extends ScalaModule {
 
-  def scalaVersion = "2.13.14"
+  def scalaVersion = "2.13.15"
 
-  val chiselOrg           = "edu.berkeley.cs" // "org.chipsalliance"
-  val chiselVersion       = sys.env.getOrElse("CHISEL_VERSION", "3.6-SNAPSHOT")
+  val chiselOrg           = "org.chipsalliance"
+  val chiselVersion       = sys.env.getOrElse("CHISEL_VERSION", "7.0.0-M2+")
   val chiselTestVersion   = "0" + chiselVersion.tail
   val chiselVerifyVersion = "0.3.0"
 
@@ -31,10 +31,10 @@ object $name;format="camel"$ extends ScalaModule {
   override def ivyDeps = Agg(
     ivy"\${chiselOrg}::chisel3:\${chiselVersion}",
     // some other useful libs
-    ivy"com.lihaoyi::mainargs:0.5.0",
-    ivy"com.lihaoyi::pprint:0.8.1",
-    ivy"com.lihaoyi::upickle:3.1.0",
-    ivy"com.outr::scribe:3.11.1",
+    ivy"com.lihaoyi::mainargs:0.7.0+",
+    // ivy"com.lihaoyi::pprint:0.8.1",
+    // ivy"com.lihaoyi::upickle:3.1.0",
+    // ivy"com.outr::scribe:3.11.1",
   )
 
   override def scalacPluginIvyDeps = Agg(
