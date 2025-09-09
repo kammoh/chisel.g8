@@ -1,0 +1,42 @@
+//| mill-version: 1.0.3-jvm
+
+package build
+import mill.*
+import scalalib.*
+
+object $name;format="camel"$ extends ScalaModule {
+
+  def scalaVersion = "2.13.16"
+
+  val chiselVersion = sys.env.getOrElse("CHISEL_VERSION", "7.0.0")
+
+  override def scalacOptions = Seq(
+    // checks:
+    "-feature",
+    "-deprecation",
+    "-unchecked",
+    "-Xcheckinit",
+    // chisel:
+    "-language:reflectiveCalls",
+    "-Ymacro-annotations",
+    // warnings:
+    "-Wunused",
+    "-Xlint:adapted-args",
+    "-Wconf:cat=unused&msg=parameter .* in .* never used:silent"
+  )
+
+  override def mvnDeps = Seq(
+    mvn"org.chipsalliance::chisel:\${chiselVersion}",
+    mvn"com.lihaoyi::mainargs:0.7.6",
+  )
+
+  override def scalacPluginMvnDeps = Seq(
+    mvn"org.chipsalliance:::chisel-plugin:\${chiselVersion}"
+  )
+
+  object test extends ScalaTests with TestModule.ScalaTest {
+    override def mvnDeps = super.mvnDeps() ++ Seq(
+      mvn"org.scalatest::scalatest:3.2.19",
+    )
+  }
+}

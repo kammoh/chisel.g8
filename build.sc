@@ -7,9 +7,9 @@ import mill.scalalib._
 object g8 extends G8Module {
   override def validationTargets =
     Seq(
-      "scalaHelloWorld.compile",
-      "scalaHelloWorld.run",
-      "scalaHelloWorld.test"
+      "chiselHelloWorld.compile",
+      "chiselHelloWorld.run",
+      "chiselHelloWorld.test"
     )
 }
 
@@ -17,8 +17,8 @@ object g8 extends G8Module {
   * then updates them in the actual template.
   */
 object Steward extends ScalaModule {
-  def scalaVersion = "2.13.14"
+  def scalaVersion = "2.13.16"
   def ivyDeps = Agg(
-    ivy"org.scalameta::munit::1.0.1"
+    ivy"org.scalameta::munit::1.0.3"
   )
 }
