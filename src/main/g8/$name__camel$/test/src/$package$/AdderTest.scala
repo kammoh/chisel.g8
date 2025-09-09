@@ -1,7 +1,7 @@
 package $package$
 
 import chisel3._
-import chisel3.simulator._
+import chisel3.simulator.scalatest.ChiselSim
 import org.scalatest.flatspec.AnyFlatSpec
 
 class AdderTest extends AnyFlatSpec with ChiselSim {
