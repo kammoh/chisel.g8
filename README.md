@@ -5,14 +5,25 @@ based on [com-lihaoyi/mill-scala-hello.g8](https://github.com/com-lihaoyi/mill-s
 
 ## Getting Started
 
-_Usage with Giter8_
+### Usage with Giter8
 
 ```sh
 g8 kammoh/chisel.g8
 ```
 
-_Usage with Mill_
+### Usage with Mill
 
 ```sh
 mill init kammoh/chisel.g8
 ```
+
+To specify output directory and project name, use the `-o` and `--name` options:
+
+```sh
+mill init kammoh/chisel.g8 -o example_project --name=example
+```
+
+This will create a new directory named `example_project` with the project name set to `example`.
+
+### Troubleshooting
+When using `mill init`, if you encounter `mill.scalalib.giter8.Giter8Module.init os.SubprocessException` error, try specifying the project name with the `--name` option as shown above to skip the interactive prompt.
