@@ -10,7 +10,7 @@ class AdderTest extends AnyFlatSpec with ChiselSim {
   val width = 8
 
   s"\$width-bit Adder" should "add two numbers correctly" in {
-    simulate(new Adder(8)) { c =>
+    simulate(new Adder(width)) { c =>
       for (_ <- 0 until 1000) {
         val a = rand.nextLong(1L << width)
         val b = rand.nextLong(1L << width)
