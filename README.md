@@ -1,18 +1,18 @@
-# mill-scala-hello.g8
+# chisel.g8
 
-A minimal Hello World template [Giter8](http://www.foundweekends.org/giter8/)
-template for [Mill](https://com-lihaoyi.github.io/mill/mill/Intro_to_Mill.html).
+A minimal [Chisel] 7.x template [Giter8](http://www.foundweekends.org/giter8/) template using [Mill](https://mill-build.org/mill/index.html) and
+based on [com-lihaoyi/mill-scala-hello.g8](https://github.com/com-lihaoyi/mill-scala-hello.g8).
 
 ## Getting Started
 
 _Usage with Giter8_
 
 ```sh
-g8 com-lihaoyi/mill-scala-hello.g8
+g8 kammoh/chisel.g8
 ```
 
 _Usage with Mill_
 
 ```sh
-mill init com-lihaoyi/mill-scala-hello.g8
+mill init kammoh/chisel.g8
 ```
